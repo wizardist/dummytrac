@@ -149,8 +149,9 @@ $( document ).ajaxComplete( function() {
 $( function() {
 	if ( window.location.hash.match( /ticket\/\d+$/i ) ) {
 		dt.setView( 'read' );
+	} else {
+		dt.setView( $( '.view:visible' ).data( 'view' ) );
 	}
-	dt.setView( $( '.view:visible' ).data( 'view' ) );
 } );
 </script>
 </body>
