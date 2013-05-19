@@ -45,6 +45,9 @@ var dt = ( function ( $ ) {
 	}
 
 	return {
+
+		currentTicket: 0,
+
 		setView: function ( view ) {
 			var currentView = $( '.view:visible' ).data( 'view' );
 			console.log( 'View changed from [' + currentView + '] to [' + view + ']' );
@@ -62,6 +65,7 @@ var dt = ( function ( $ ) {
 							.data( 'targetview', 'read' )
 							.data( 'ticketID', ticket.ticketID )
 							.click( function ( e ) {
+								dt.currentTicket = $( e.currentTarget ).data( 'ticketID' ) - 0;
 								dt.setView( $( e.currentTarget ).data( 'targetview' ) );
 							} )
 							.addClass( 'changeview' )
@@ -78,7 +82,7 @@ var dt = ( function ( $ ) {
 					$( '#view-browse table' ).trigger( 'update' );
 				} );
 			} else if ( view == 'read' ) {
-				var ticketID = $( event.currentTarget ).data( 'ticketID' ) - 0
+				var ticketID = dt.currentTicket
 					|| window.location.hash.match( /ticket\/(\d+)$/i )[1] - 0;
 				dt.loadTicket( ticketID, function ( data ) {
 					dt.clearReadView();
@@ -100,7 +104,6 @@ var dt = ( function ( $ ) {
 			$( '#view-' + view ).show();
 
 			if ( view != 'read' ) {
-				//window.location.hash = '';
 				if ( window.history && 'pushState' in history ) {
 					history.pushState( '', document.title, window.location.pathname + window.location.search );
 				} else {
