@@ -27,10 +27,6 @@ pre {
     font-size: 16px;
 }
 
-div, header {
-    /*border: 1px solid black;*/ /* FIXME */
-}
-
 #container {
     width: 1000px;
     margin: auto;

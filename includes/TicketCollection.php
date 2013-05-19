@@ -24,7 +24,6 @@ class TicketCollection {
 		foreach ( $rawResult as $key => $value ) {
 			$this->_tickets[(int)$value['ticket_id']] = Ticket::newFromData( $value );
 		}
-		//print_r( $this->_tickets );
 	}
 
 	public function getByID( $id ) {
