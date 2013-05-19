@@ -5,7 +5,7 @@ if ( !defined( 'DUMMYTRACKER' ) ) {
 
 $settings = array(
 	// URLs & paths
-	'host' => 'test.project',
+	'host' => 'dummytrac.test.project',
 	'path' => '',
 	'resources' => 'resources/',
 
